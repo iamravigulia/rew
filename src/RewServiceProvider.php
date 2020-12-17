@@ -1,11 +1,11 @@
 <?php
 
-namespace edgewizz\fillup;
+namespace edgewizz\rew;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Blade;
 
-class FillupServiceProvider extends ServiceProvider
+class RewServiceProvider extends ServiceProvider
 {
     /**
      * Register services.
@@ -14,7 +14,7 @@ class FillupServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->make('Edgewizz\Fillup\Controllers\FillupController');
+        $this->app->make('Edgewizz\Rew\Controllers\RewController');
     }
 
     /**
@@ -25,9 +25,10 @@ class FillupServiceProvider extends ServiceProvider
     public function boot()
     {
         // dd($this);
-        $this->loadMigrationsFrom(__DIR__.'/migrations');
         $this->loadRoutesFrom(__DIR__.'/routes.php');
-        $this->loadViewsFrom(__DIR__ . '/components', 'fillup');
-        Blade::component('fillup::form.open', 'form.open');
+        $this->loadMigrationsFrom(__DIR__.'/migrations');
+        $this->loadViewsFrom(__DIR__ . '/components', 'rew');
+        Blade::component('rew::rew.open', 'rew.open');
+        Blade::component('rew::rew.index', 'rew.index');
     }
 }
